@@ -1,0 +1,18 @@
+{% extends 'accounts/voter_base.html' %}
+
+{% block content %}
+
+<h2>📊 Voter Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card p-3 shadow text-center">
+            <h5>🗳 Active Elections</h5>
+            <h2>{{ active_elections }}</h2>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

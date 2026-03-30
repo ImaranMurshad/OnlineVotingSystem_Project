@@ -1,0 +1,25 @@
+{% extends 'accounts/host_base.html' %}
+
+{% block content %}
+
+<h3>🧑‍💼 Pending Voters</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Username</th>
+        <th>Action</th>
+    </tr>
+
+    {% for v in voters %}
+    <tr>
+        <td>{{ v.username }}</td>
+        <td>
+            <a href="/host/approve/{{ v.id }}/" class="btn btn-success btn-sm">Approve</a>
+            <a href="/host/reject-voter/{{ v.id }}/" class="btn btn-danger btn-sm">Reject</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

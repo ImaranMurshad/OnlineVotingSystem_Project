@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Host Panel</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .sidebar {
+            height: 100vh;
+            background: #1e293b;
+            color: white;
+            position: fixed;
+            width: 220px;
+        }
+
+        .sidebar a {
+            color: #cbd5e1;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #334155;
+            color: white;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        .topbar {
+            background: #0f172a;
+            color: white;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔥 SIDEBAR -->
+<div class="sidebar">
+    <h4 class="text-center mt-3">👑 Host Panel</h4>
+
+    <!-- Dashboard -->
+    <a href="{% url 'host_dashboard' %}">
+        🏠 Dashboard
+    </a>
+
+    <!-- My Elections -->
+    <a href="{% url 'my_elections' %}">
+        📋 My Elections
+    </a>
+
+    <!-- Create Election -->
+    <a href="{% url 'create_election' %}">
+        ➕ Create Election
+    </a>
+
+    <!-- Approve Voters -->
+    <a href="{% url 'host_approve_voters' %}">
+        ✅ Approve Voters
+    </a>
+
+    <!-- Logout -->
+    <a href="{% url 'logout' %}" class="text-danger">
+        🚪 Logout
+    </a>
+</div>
+
+<!-- 🔥 MAIN CONTENT -->
+<div class="content">
+
+    <!-- TOP BAR -->
+    <div class="topbar mb-4">
+        Welcome, {{ request.user.username }}
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+
+        <div class="card p-4 shadow">
+            <h3 class="text-center mb-3">👑 Register as Host</h3>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <input type="text" name="username" class="form-control mb-2" placeholder="Username" required>
+                <input type="text" name="first_name" class="form-control mb-2" placeholder="First Name">
+                <input type="text" name="last_name" class="form-control mb-2" placeholder="Last Name">
+                <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
+                <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+
+                <button class="btn btn-success w-100">Register</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

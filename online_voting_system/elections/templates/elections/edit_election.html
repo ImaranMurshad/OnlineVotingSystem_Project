@@ -1,0 +1,78 @@
+{% extends 'accounts/host_base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">✏️ Edit Election</h2>
+
+<div class="card p-4 shadow-sm">
+
+    <!-- SUCCESS / ERROR MESSAGES -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" id="editForm">
+        {% csrf_token %}
+
+        <!-- TITLE -->
+        <div class="mb-3">
+            <label class="form-label">Election Title</label>
+            <input type="text" name="title" class="form-control" value="{{ election.title }}">
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" class="form-control" rows="4">{{ election.description }}</textarea>
+        </div>
+
+        <!-- DATES -->
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Start Date</label>
+                <input type="datetime-local" name="start_date" class="form-control"
+                       value="{{ election.start_date|date:'Y-m-d\\TH:i' }}">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label">End Date</label>
+                <input type="datetime-local" name="end_date" class="form-control"
+                       value="{{ election.end_date|date:'Y-m-d\\TH:i' }}">
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <button class="btn btn-primary w-100">Update Election</button>
+
+    </form>
+
+</div>
+
+<!-- 🔥 VALIDATION -->
+<script>
+document.getElementById("editForm").addEventListener("submit", function(e){
+
+    let title = document.querySelector("input[name='title']").value.trim();
+    let start = document.querySelector("input[name='start_date']").value;
+    let end = document.querySelector("input[name='end_date']").value;
+
+    if(title === "" || start === "" || end === ""){
+        alert("All fields are required!");
+        e.preventDefault();
+    }
+
+    if(start >= end){
+        alert("End date must be after start date!");
+        e.preventDefault();
+    }
+
+});
+</script>
+
+{% endblock %}

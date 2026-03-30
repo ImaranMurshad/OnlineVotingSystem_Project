@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Voting System</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+            color: white;
+        }
+        .navbar {
+            background-color: #1c1c1c;
+        }
+        .container-box {
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔥 NAVBAR (MASTER PAGE) -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">🗳 Voting System</a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about/">About Us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/">Contact Us</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="/login/">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 🔥 PAGE CONTENT -->
+<div class="container container-box">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

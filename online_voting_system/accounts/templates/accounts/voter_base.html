@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voter Panel</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+        }
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: #1f2d3d;
+            color: white;
+            position: fixed;
+        }
+
+        .sidebar h4 {
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #34495e;
+            color: white;
+        }
+
+        .content {
+            margin-left: 240px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .topbar {
+            background: #0d1b2a;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🔥 SIDEBAR -->
+    <div class="sidebar">
+        <h4>🗳️ Voter Panel</h4>
+
+        <a href="{% url 'voter_dashboard' %}">🏠 Dashboard</a>
+        <a href="{% url 'voter_elections' %}">🗳 Elections</a>
+        <a href="/logout/">🚪 Logout</a>
+    </div>
+
+    <!-- 🔥 CONTENT -->
+    <div class="content">
+
+        <div class="topbar">
+            Welcome, {{ request.user.username }}
+        </div>
+
+        {% block content %}{% endblock %}
+
+    </div>
+
+</body>
+</html>

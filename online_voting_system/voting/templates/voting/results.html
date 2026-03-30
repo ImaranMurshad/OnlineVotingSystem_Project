@@ -1,0 +1,64 @@
+{% extends 'accounts/host_base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">📊 Election Results - {{ election.title }}</h2>
+
+<!-- RESULTS TABLE -->
+<div class="card shadow-sm p-4 mb-4">
+
+    <h5 class="mb-3">🗳️ Votes Summary</h5>
+
+    <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Candidate</th>
+                <th>Total Votes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for candidate in results %}
+            <tr class="{% if candidate == winner %}table-success fw-bold{% endif %}">
+                <td>{{ candidate.name }}</td>
+                <td>{{ candidate.total_votes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<!-- WINNER CARD -->
+<div class="card text-center shadow p-4 bg-light">
+
+    <h3>🏆 Winner</h3>
+
+    {% if winner %}
+        <h2 class="text-success mt-3">{{ winner.name }}</h2>
+        <p class="fs-5">🎉 {{ winner.total_votes }} votes</p>
+    {% else %}
+        <p>No votes yet</p>
+    {% endif %}
+
+</div>
+
+<!-- 🔥 ANIMATION -->
+<style>
+.card {
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'accounts/voter_base.html' %}
+
+{% block content %}
+
+<h3 class="mb-4">🗳️ Available Elections</h3>
+
+<div class="card shadow-sm p-4">
+
+    {% if elections %}
+        <table class="table table-hover align-middle">
+            
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for e in elections %}
+                <tr>
+                    <td>{{ e.title }}</td>
+
+                    <td>{{ e.start_date|date:"M d, Y H:i" }}</td>
+
+                    <td>{{ e.end_date|date:"M d, Y H:i" }}</td>
+
+                    <td class="text-center">
+                        <a href="{% url 'vote' e.id %}" 
+                           class="btn btn-success btn-sm px-3">
+                            🗳️ Vote
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    {% else %}
+        <div class="text-center text-muted">
+            <h5>No active elections available 🚫</h5>
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

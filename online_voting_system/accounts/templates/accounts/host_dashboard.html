@@ -1,0 +1,35 @@
+{% extends 'accounts/host_base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">📊 Host Dashboard</h2>
+
+<div class="row">
+
+    <!-- Total Elections -->
+    <div class="col-md-4">
+        <div class="card shadow p-3 text-center">
+            <h5>Total Elections</h5>
+            <h2>{{ total }}</h2>
+        </div>
+    </div>
+
+    <!-- Active Elections -->
+    <div class="col-md-4">
+        <div class="card shadow p-3 text-center">
+            <h5>Active Elections</h5>
+            <h2>{{ active }}</h2>
+        </div>
+    </div>
+
+    <!-- Pending Voters -->
+    <div class="col-md-4">
+        <div class="card shadow p-3 text-center">
+            <h5>Pending Voters</h5>
+            <h2>{{ pending }}</h2>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

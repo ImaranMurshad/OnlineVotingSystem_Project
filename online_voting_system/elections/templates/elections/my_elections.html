@@ -1,0 +1,70 @@
+{% extends 'accounts/host_base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">📋 My Elections</h2>
+
+<div class="card p-4 shadow-sm">
+
+    <table class="table table-hover align-middle">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for e in elections %}
+            <tr>
+
+                <td><b>{{ e.title }}</b></td>
+
+                <td>{{ e.start_date }}</td>
+                <td>{{ e.end_date }}</td>
+
+                <!-- 🔥 STATUS -->
+                <td>
+                    {% if e.start_date > now %}
+                        <span class="badge bg-warning">Upcoming</span>
+                    {% elif e.end_date < now %}
+                        <span class="badge bg-danger">Ended</span>
+                    {% else %}
+                        <span class="badge bg-success">Active</span>
+                    {% endif %}
+                </td>
+
+                <!-- 🔥 ACTION BUTTONS -->
+                <td>
+
+                    <a href="{% url 'edit_election' e.id %}" class="btn btn-sm btn-primary">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'add_candidate' e.id %}" class="btn btn-sm btn-success">
+                        Candidates
+                    </a>
+
+                    <a href="{% url 'election_results' e.id %}" class="btn btn-sm btn-dark">
+                        Results
+                    </a>
+
+                </td>
+
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No Elections Found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}
