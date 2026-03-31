@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = 'django-insecure-k+ifef0((m#n1!o96+eo^1!k$ey-165(7c9y6-^*!llz^05cfm'
 DEBUG = True
-ALLOWED_HOSTS = ['3.236.230.242', 'ec2-3-236-230-242.compute-1.amazonaws.com' ]
+ALLOWED_HOSTS = ['13.60.96.148', 'ec2-13-60-96-148.eu-north-1.compute.amazonaws.com' ]
 
 
 # INSTALLED APPS
